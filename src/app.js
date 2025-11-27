@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import routes from './routes/index.js'
 import { errorHandler } from './middlewares/errorHandler.js'
+import { sequelize } from './database/index.js'
 
 dotenv.config()
 
@@ -15,6 +16,16 @@ app.get('/health', (req, res) => {
     status: 'ok',
     env: process.env.NODE_ENV || 'development'
   })
+})
+
+// Health do banco
+app.get('/health/db', async (req, res) => {
+  try {
+    await sequelize.authenticate()
+    return res.status(200).json({ database: 'ok' })
+  } catch (error) {
+    return res.status(500).json({ database: 'error', message: error.message })
+  }
 })
 
 // Rotas principais
