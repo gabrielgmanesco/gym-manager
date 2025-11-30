@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    container_name: gymmanager_api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - JWT_SECRET=changeme
+      - JWT_EXPIRES_IN=1d
+      - DB_STORAGE=/usr/src/app/database/database.sqlite
+      - DB_STORAGE_TEST=/usr/src/app/database/database.test.sqlite
+      - BCRYPT_SALT_ROUNDS=10
+    volumes:
+      # Volume para hot-reload do código (desenvolvimento)
+      - ./src:/usr/src/app/src
+      # Volume para persistir banco de dados (fora do src para evitar conflito)
+      - gymmanager_data:/usr/src/app/database
+    command: ["npm", "run", "dev"]
+
+volumes:
+  gymmanager_data:

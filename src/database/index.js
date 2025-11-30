@@ -8,7 +8,8 @@ dotenv.config()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const storage = process.env.DB_STORAGE || path.join(__dirname, 'database.sqlite')
+// Banco na raiz do projeto (fora do src) para evitar conflito com volumes Docker
+const storage = process.env.DB_STORAGE || path.join(__dirname, '../../database/database.sqlite')
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
