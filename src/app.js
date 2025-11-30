@@ -12,10 +12,8 @@ const app = express()
 
 app.use(express.json())
 
-// Swagger
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-// Health check simples
 app.get('/health', (req, res) => {
   return res.status(200).json({
     status: 'ok',
@@ -23,7 +21,6 @@ app.get('/health', (req, res) => {
   })
 })
 
-// Health do banco
 app.get('/health/db', async (req, res) => {
   try {
     await sequelize.authenticate()
@@ -33,10 +30,8 @@ app.get('/health/db', async (req, res) => {
   }
 })
 
-// Rotas principais
 app.use('/api', routes)
 
-// Middleware global de erro (sempre por último)
 app.use(errorHandler)
 
 export default app

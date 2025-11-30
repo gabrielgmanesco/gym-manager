@@ -1,7 +1,7 @@
 import app from './app.js'
 import dotenv from 'dotenv'
 import { connectDatabase } from './database/index.js'
-import './models/index.js' // Importa e registra associações
+import './models/index.js'
 
 dotenv.config()
 

@@ -70,7 +70,6 @@ class WorkoutSheetService {
       name
     })
 
-    // exercises: [{ exerciseId, sets, reps, restSeconds, observation }]
     if (Array.isArray(exercises) && exercises.length > 0) {
       for (const item of exercises) {
         const { exerciseId, sets, reps, restSeconds, observation } = item

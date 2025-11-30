@@ -35,7 +35,6 @@ module.exports = {
         allowNull: false
       },
       status: {
-        // "paid", "pending", "overdue"
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: 'paid'

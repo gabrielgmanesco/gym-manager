@@ -21,7 +21,6 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       name: {
-        // Ex: "Treino A", "Treino B", "Treino C"
         type: Sequelize.STRING,
         allowNull: false
       },

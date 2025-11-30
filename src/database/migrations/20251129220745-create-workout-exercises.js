@@ -35,7 +35,6 @@ module.exports = {
         allowNull: false
       },
       reps: {
-        // ex: "8-12", "12", etc
         type: Sequelize.STRING,
         allowNull: false
       },

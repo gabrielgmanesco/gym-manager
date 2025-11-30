@@ -13,9 +13,9 @@ services:
       - DB_STORAGE_TEST=/usr/src/app/database/database.test.sqlite
       - BCRYPT_SALT_ROUNDS=10
     volumes:
-      # Volume para hot-reload do código (desenvolvimento)
+      # Volume for code hot-reload (development)
       - ./src:/usr/src/app/src
-      # Volume para persistir banco de dados (fora do src para evitar conflito)
+      # Volume to persist database (outside src to avoid conflict)
       - gymmanager_data:/usr/src/app/database
     command: ["npm", "run", "dev"]
 
