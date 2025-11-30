@@ -3,12 +3,17 @@ import dotenv from 'dotenv'
 import routes from './routes/index.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import { sequelize } from './database/index.js'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocument from './docs/swagger.js'
 
 dotenv.config()
 
 const app = express()
 
 app.use(express.json())
+
+// Swagger
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // Health check simples
 app.get('/health', (req, res) => {
